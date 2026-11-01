@@ -8,7 +8,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/main.js",
-    "dev": "npx tsc && node dist/main.js",
+    "dev": "npx tsc && NODE_USE_ENV_PROXY=1 node dist/main.js",
     "test": "vitest --run"
   }
 }
