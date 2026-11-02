@@ -4,6 +4,8 @@ import { commandExit } from "./command_exit.js";
 import type { CLICommand } from "./state.js";
 import { ShallowLocations } from "./pokeapi.js";
 import { commandExplore } from "./command_explore.js";
+import { commandCatch } from "./command_catch.js";
+import { commandInspect } from "./command_inspect.js";
 
 export function getCommands(): Record<string, CLICommand> {
   return {
@@ -53,9 +55,22 @@ export function getCommands(): Record<string, CLICommand> {
     },
 
     explore: {
-      name: "explore",
+      name: "explore <location_area>",
       description: "It takes the name of a location area and diplays the pokemon in that area",
       callback: commandExplore
+    },
+
+    catch: {
+      name: "catch <pokemon>",
+      description: "It catches a pokemon",
+      callback: commandCatch
+    },
+
+    inspect: {
+      name: "inspect <pokemon>",
+      description: "It takes the name of a Pokemon and prints the details of the Pokemon.",
+      callback: commandInspect
     }
+    
   };
 }
