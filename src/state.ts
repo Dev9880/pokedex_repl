@@ -16,8 +16,8 @@ export type CLICommand = {
     callback: (state: State) => Promise<void>;
 };
 
-export function initState(): State {
-    const pokeapi = new PokeAPI();
+export function initState(cacheInterval: number): State {
+    const pokeapi = new PokeAPI(cacheInterval);
     const state: State = {
         rl: createInterface({
             input: process.stdin,
