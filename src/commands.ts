@@ -6,6 +6,7 @@ import { ShallowLocations } from "./pokeapi.js";
 import { commandExplore } from "./command_explore.js";
 import { commandCatch } from "./command_catch.js";
 import { commandInspect } from "./command_inspect.js";
+import { commandPokedex } from "./command_pokedex.js";
 
 export function getCommands(): Record<string, CLICommand> {
   return {
@@ -70,7 +71,13 @@ export function getCommands(): Record<string, CLICommand> {
       name: "inspect <pokemon>",
       description: "It takes the name of a Pokemon and prints the details of the Pokemon.",
       callback: commandInspect
+    },
+
+    pokedex: {
+      name: "pokedex",
+      description: "Displays your pokemons.",
+      callback: commandPokedex
     }
-    
+
   };
 }
