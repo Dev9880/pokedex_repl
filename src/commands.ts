@@ -3,6 +3,7 @@ import { commandExit } from "./command_exit.js";
 
 import type { CLICommand } from "./state.js";
 import { ShallowLocations } from "./pokeapi.js";
+import { commandExplore } from "./command_explore.js";
 
 export function getCommands(): Record<string, CLICommand> {
   return {
@@ -36,7 +37,7 @@ export function getCommands(): Record<string, CLICommand> {
 
     mapb: {
       name: "mapb",
-      description: " it displays the previous 20 locations. It's a way to go back",
+      description: "It displays the previous 20 locations. It's a way to go back",
       callback: async (state) => { 
           if (!state.prevLocationsURL) {
             throw new Error("you're on the first page");
@@ -49,6 +50,12 @@ export function getCommands(): Record<string, CLICommand> {
             console.log(`${location.name}`);
           }
       }
+    },
+
+    explore: {
+      name: "explore",
+      description: "It takes the name of a location area and diplays the pokemon in that area",
+      callback: commandExplore
     }
   };
 }

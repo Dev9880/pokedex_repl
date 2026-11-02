@@ -11,7 +11,11 @@ export async function startREPL(state: State) {
             return;
         }
 
-        const commandName = words[0];
+        // const commandName = words[0];
+        // const args = words.slice(1);
+
+
+        const [commandName, ...args] = words;   // here args is an string[]
         const cmd = state.commands[commandName];
         if (!cmd) {
             console.log(`Unknown command: "${commandName}". Type "help" for a list of commands.`);
@@ -20,7 +24,8 @@ export async function startREPL(state: State) {
         }
         
         try {
-            await cmd.callback(state);
+            // ...args: string[] expects strings not string[]
+            await cmd.callback(state, ...args);
         } catch (e) {
             console.log((e as Error).message);
         }
@@ -30,14 +35,14 @@ export async function startREPL(state: State) {
 }
 
 export function cleanInput(input: string): string[] {
+
+    return input.toLowerCase().trim().split(" ").filter((word) => word !== "");
 //   const result: string[] = input.trim().split(/\s+/).map(str => {
 //     return str.toLowerCase();
 //   });
 
 //   return result;
-
-  return input.toLowerCase().trim().split(" ").filter((word) => word !== "");
-  // the above will not work for 
+// the above will not work for 
   /**
    * {
         input: "  ",

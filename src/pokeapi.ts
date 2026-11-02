@@ -95,6 +95,7 @@ export type Location = {
       };
     }[];
   }[];
+
   game_index: number;
   id: number;
   location: {
@@ -109,6 +110,7 @@ export type Location = {
     };
     name: string;
   }[];
+
   pokemon_encounters: {
     pokemon: {
       name: string;
@@ -132,4 +134,5 @@ export type Location = {
       };
     }[];
   }[];
+  
 };
